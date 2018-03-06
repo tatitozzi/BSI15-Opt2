@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Agenda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets\main.css" />
+</head>
+<body>
+    <div class="window" id="janela-1">
+        Janela 1
+    </div>
+
+    <div class="window" id="janela-2">
+        Janela 2
+    </div>
+
+    <script>
+        class WindowControll {
+            constructor() {
+                if (WindowControll.instance)
+                    return WindowControll.instance
+
+                this.windows = document.querySelectorAll ('div.window')
+                this.openByElement(WindowControll.windows[0])
+
+                return WindowControll.instance || (WindowControll = true)
+            }
+
+            static closeAll () {
+                this.windows.forEach (el => el.classList.remove('open'))
+            }
+
+            static openByElement(element){
+                if (!element instanceof HTMLElement)
+                    return
+                this.closeAll()
+                this.currentWindow = element
+                element.classList.add('open')                
+            }
+
+            static open(querySelector){
+                return this.openByElement(document.querySelector(querySelector))
+            }
+        }
+        
+    </script>
+
+</body>
+</html>

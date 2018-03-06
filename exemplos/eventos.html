@@ -1,0 +1,56 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+    <style> 
+        div {
+            font-size: 5vw;
+            color: white;
+            background-color: blue;
+            padding: 5vw
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div>
+        AAA
+        <div>
+            BBB
+            <div>
+                CCC
+            </div>
+        </div>
+    </div>
+
+        <script> 
+        const divA = document.querySelector('div:nth-child(1)')
+        const divB = divA.querySelector('div')
+        const divC = divB.querySelector('div')
+
+            divA.addEventListener('click', ev => {
+                ev.stopImmediatePropagation()
+                alert ('Div A')
+            }, true
+            )
+
+            
+            divB.addEventListener('click', ev => {
+                alert ('Div B')
+            }, true
+            )
+
+            
+            divC.addEventListener('click', ev => {
+                alert ('Div C')
+            }, true
+            )
+
+        </script>
+</body>
+</html>
