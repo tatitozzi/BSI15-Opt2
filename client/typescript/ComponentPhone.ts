@@ -1,37 +1,32 @@
 export class ComponentPhone {
-    private firstElementItem: HTMLDivElement|null;
-    private firstElementInputPhone: HTMLInputElement|null;
+    private firstElementItem: HTMLDivElement;
+    private firstElementInputPhone: HTMLInputElement;
     private addButton: HTMLButtonElement;
-   
-    constructor (
+
+    constructor(
         private elementRoot: HTMLDivElement
-    ) 
-        {        
-            this.firstElementItem = elementRoot.querySelector('div.item')
-            this.firstElementInputPhone = <HTMLInputElement> this.firstElementInputPhone.querySelector('input.number')
-            this.addButton = elementRoot.querySelector('button.button-add')
-            this.atachEvents()
-         }
+    ) {
+        this.firstElementItem = <HTMLDivElement>elementRoot.querySelector('div.item')
+        this.firstElementInputPhone = <HTMLInputElement>this.firstElementItem.querySelector('input[name=number]')
+        this.addButton = <HTMLButtonElement>elementRoot.querySelector('button.button-add')
+        this.atachEvents()
+    }
 
-         private atachEvents(){
-            this.addButton.addEventListener ('click', ev => { 
-                if (this.firstElementInputPhone.trim() == ""){
-                    ev.stopImmediatePropagation()
-                    return
-                }
-                //alert (123)
-                var itemCloned = <HTMLDivElement>this.firstElementItem.cloneNode(true)
-                this.elementRoot.insertBefore(itemCloned, this.firstElementItem)
-                this.firstElementInputPhone.value =""
-                
-                var button = itemCloned.querySelector('button.button-add')
-                button.className = ""
-                button.innerText = "-"
+    private atachEvents() {
+        this.addButton.addEventListener('click', ev => {
+            if (this.firstElementInputPhone.value.trim() == "") {
+                return
+            }
 
-                button.addEventListener('click', ev => {
-                    ev.target.closest('div.item').remove()
-                }
-            )
-            }) 
-         }
+            var itemCloned = <HTMLDivElement>this.firstElementItem.cloneNode(true)
+            this.elementRoot.insertBefore(itemCloned, this.firstElementItem)
+            this.firstElementInputPhone.value = ""
+            var button = <HTMLButtonElement>itemCloned.querySelector('button.button-add')
+            button.className = ""
+            button.innerText = "-"
+            button.addEventListener('click', ev => {
+                ev.target.closest('div.item').remove()
+            })
+        })
+    }
 }
