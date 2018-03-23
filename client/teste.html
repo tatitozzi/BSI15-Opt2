@@ -22,7 +22,9 @@
                         <span data-anchor="apelido"></span>
                     </div>
                     <div class="email"> <span data-anchor="email"></span></div>
-                    <div class="telefones"> <span data-anchor="numero"></span></div>
+                    <div class="telefones"> <span id="destino" data-anchor="numero"></span></div>
+                   
+                    
                 </div>
             </div>
             <div class="item">
@@ -42,8 +44,9 @@
         <div class="component component-phone">
             <div class="item">
                 <label for="">Telefone</label>
-                <input name="number" type="text" data-reference="numero">
-                <button class="button-add">+</button>
+                <input  name="number[]" type="text" id="origem"  data-reference="numero">
+                <button class="button-add" onclick="duplicarCampos()">+</button>
+                
             </div>
         </div>
     </div>
@@ -67,10 +70,19 @@
                     reference.addEventListener('keyup', ev => {
                         anchor.innerText = reference.value
                     })
-                })
-           
-                
+                })           
             })()
+
+            function duplicarCampos(){
+            var clone = document.getElementById('origem').cloneNode(true);
+            var destino = document.getElementById('destino');
+            destino.appendChild (clone);
+            var camposClonados = clone.getElementsByTagName('span');
+            for(i=0; i<camposClonados.length;i++){
+                camposClonados[i].value = '';
+            }
+        }
+
 
         </script>
 

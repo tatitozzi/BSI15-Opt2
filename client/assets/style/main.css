@@ -21,11 +21,18 @@ div.window {
   div.window.open {
     opacity: 1;
     visibility: visible; }
-  div.window.cadastro .perfil .thumb {
-    width: 10vw;
-    height: 10vw;
-    background-image: url(https://avatars1.githubusercontent.com/u/18054573?s=460&v=4);
-    background-size: cover; }
+  div.window.cadastro .perfil .preview {
+    padding: 1vw 10vw;
+    display: flex;
+    color: #D4D4D4; }
+    div.window.cadastro .perfil .preview .thumb {
+      flex: none;
+      width: 10vw;
+      height: 10vw;
+      background-image: url(https://avatars1.githubusercontent.com/u/18054573?s=460&v=4);
+      background-size: cover; }
+    div.window.cadastro .perfil .preview .display {
+      padding: 1vw; }
   div.window.cadastro .component-phone {
     color: red; }
   div.window.cadastro * {
