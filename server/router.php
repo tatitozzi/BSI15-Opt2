@@ -1,12 +1,17 @@
 <?php
+
+header('Content-Type: application/json;charset=UTF-8');
+header('Accept: application/json');
 header("Access-Control-Allow-Origin: *");
 
-sleep();
+sleep(3);
 
-$content = file_get_contents("php://input");
-$content = json_decode($content);
+$content = json_decode( file_get_contents("php://input"), true );
+echo json_encode($content);
 
-print_r ($content);
+//$content = file_get_contents("php://input");
+//$content = json_decode($content);
+//print_r ($content);
 // print_r($_SERVER);
 
 
