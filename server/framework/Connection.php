@@ -13,3 +13,6 @@ return new class {
         print_r($result);
     }
 };
+
+// criar banco
+//tabela pessoa e telefone
