@@ -1,9 +1,5 @@
-# BSI15-Opt2
-Repositório das aulas de Optativa II - Utilização de Tecnologia emergentes no desenvolvimento de aplicações cliente servidor modernas
+# BSI15-OPTII
+Repo das aulas de optativa II
 
-## Instalação do Git
-06 de março
-
-### Atualizações
-- Inserido telefones
-- Inserido Nome, e-mail, apelido
+## Alterado
+...

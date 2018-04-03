@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
 
-    <style> 
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <style>
         div {
             font-size: 6vw;
             color: white;
@@ -13,16 +12,14 @@
             padding: 5vw;
         }
     </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 </head>
+
 <body>
-    <form> 
+    <form>
         <input name="dado">
         <button>Send</button>
-            </form>
-
+    </form>
+    
     <div>
         AAA
         <div>
@@ -33,44 +30,42 @@
         </div>
     </div>
 
-<script> 
-    
-            const form = document.querySelector('form')
+    <script>
+        const form = document.querySelector('form')
 
-            form.addEventListener ('submit', function(ev) {
-                ev.preventDefault()
-            }, false)
+        form.addEventListener('submit', function(ev){
+            ev.preventDefault()
+            console.log(ev)
+        }, false)
 
-            //ao clicar no divC e o texto do input for "daniel"
-            //disparar um evento customizado dizendo:
-            //oi! eu sou um evento customizado!
+        // ao clicar no divC e o texto do input for "daniel"
+        // disparar um evento customizavel dizendo: 
+        // oi! eu sou um evento cutomizado!
+        // --------------------------------------------------
+        // new CustomEvent
+        // dispatchEvent
+        // addEventListener
 
-            // -----------------------------------------------------------------
-            //new CustomEvent
-            //new dispatchEvent
-            //addEventListener
-            // -----------------------------------------------------------------
+        // ---------------------------------------------------------
 
         const divA = document.querySelector('div')
         const divB = divA.querySelector('div')
         const divC = divB.querySelector('div')
 
-            divA.addEventListener('click', ev => {
-                ev.stopImmediatePropagation()
-                alert ('Div A')
-            }, true
-            )
-         
-            divB.addEventListener('click', ev => {
-                alert ('Div B')
-            }, true
-            )
-            
-            divC.addEventListener('click', ev => {
-                alert ('Div C')
-            }, true
-            )
+        divA.addEventListener('click', ev => {
+            ev.stopImmediatePropagation()
+            alert('div A')
+        }, true)
 
-        </script>
+        divB.addEventListener('click', ev => {
+            // alert('div B')
+        }, true)
+
+        divC.addEventListener('click', ev => {
+            // alert('div C')
+            console.log(ev)
+        }, true)
+    </script>
 </body>
+
 </html>

@@ -3,7 +3,15 @@ return new class {
     private $pdo;
 
     function __construct() {       
-        $this->pdo = new PDO('mysql:host=localhost;dbname=agenda', "root", "", [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8']);
+        $this->pdo = new PDO(
+            "mysql:host=localhost;dbname=agenda", 
+            "root", 
+            "",
+            [
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING    
+            ]
+        );
     }
 
     function select() {
@@ -12,7 +20,12 @@ return new class {
         $result = $sth->fetchAll();
         print_r($result);
     }
-};
 
-// criar banco
-//tabela pessoa e telefone
+    function insert($table, $data) {
+        $columnNames = implode(", ", array_keys($data));
+        $columnValuesRef = ":" . implode(", :", array_keys($data));
+        $sth = $this->pdo->prepare("INSERT INTO $table($columnNames) VALUES($columnValuesRef)");
+        $sth->execute($data);
+        return $this->pdo->lastInsertId();
+    }
+};

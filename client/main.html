@@ -3,16 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Agenda</title>
+    <title>Agenda Fodastica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets\style\main.css">
 </head>
 
 <body>
-    <div class="loading">
-
-    </div>
+    <div class="loading"></div>
 
     <div class="window cadastro" id="janela-1">
         <div class="perfil">
@@ -22,11 +20,11 @@
                 </div>
                 <div class="display">
                     <div class="nome-apelido">
-                        <span data-anchor="nome"></span>, 
+                        <span data-anchor="nome"></span>,
                         <span data-anchor="apelido"></span>
                     </div>
-                    <div class="email"> <span data-anchor="email"></span></div>
-                    <div class="telefones"> <span data-anchor="numero"></span></div>
+                    <div data-anchor="email" class="email">email</div>
+                    <div data-anchor="telefone" class="telefones">telefones, ????, ????</div>
                 </div>
             </div>
             <div class="item">
@@ -46,16 +44,15 @@
         <div class="component component-phone">
             <div class="item">
                 <label for="">Telefone</label>
-                <input name="number" type="text" data-reference="numero">
+                <input data-reference="telefone" name="number" type="text">
                 <button class="button-add">+</button>
             </div>
-        </div>      
+        </div>
+
         <div>
-            <button class="enviar-dados">Salvar</button>
+            <button class="enviar-dados">salvar</button>
         </div>
     </div>
-
-    <
 
     <div class="window" id="janela-2">
         teste JANELA 2
@@ -63,14 +60,13 @@
 
     <script data-main="assets/main" src="assets/vendor/require.js"></script>
     <script>
-
         var divLoading = document.querySelector('div.loading')
+ 
         class WindowCadastro {
             constructor() {
                 if (WindowCadastro.instance)
                     return WindowCadastro.instance
                 WindowCadastro.instance = this
-                
                 this.container = document.querySelector(".window.cadastro")
                 this.attachPhoneEvents()
                 this.updateUserInfoPreview()
@@ -95,11 +91,8 @@
                 var inNickname = this.container.querySelector("input.nickname")
                 var inEmail = this.container.querySelector("input.email")
                 var ajax = null
-
                 btEnviar.addEventListener('click', ev => {
-                    if (ajax) {
-                        ajax.abort()
-                    }
+                    if (ajax) ajax.abort()
                     divLoading.classList.add('open')
                     var data = {}
                     var inPhones = this.container.querySelectorAll("[name=number]")
@@ -107,9 +100,7 @@
                     data.nickname = inNickname.value.trim()
                     data.email = inEmail.value.trim()
                     data.phones = []
-                    inPhones.forEach(inPhone => {
-                        data.phones.push(inPhone.value.trim())
-                    })
+                    inPhones.forEach(inPhone => data.phones.push(inPhone.value.trim()))
                     ajax = new XMLHttpRequest()
                     ajax.open("POST", "http://127.0.0.1:80/pessoa", true)
                     // ajax.setRequestHeader("Content-type", "application/json")
@@ -120,8 +111,7 @@
         }
 
         new WindowCadastro()
-        </script>
-
+    </script>
 </body>
 
 </html>
